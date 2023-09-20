@@ -2,7 +2,7 @@
 let lastWords = "...";
 let wordBrightness = 255;
 let yOffset = 0;
-//fgfgfgf
+
 
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 background(0);
