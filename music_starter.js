@@ -1,5 +1,5 @@
 var leftcircle_posx = 540/2;
-var rightcircle_posx = 540/2;
+var rightcircle_posx = 940/2;
 var isLeftcircle = false;
 var isRighrcircle = false;
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
@@ -8,6 +8,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   textFont('Helvetica'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(24);
+  console.log(counter);
 
   let red = color(245, 66, 66);
   let yellow = color(245, 236, 66);
@@ -20,8 +21,9 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   fill(colorLerp);
   ellipse(width/2, height/2, rectSize, rectSize);
  
-  right_circle(rectSize);
-  left_circle(rectSize);
+  ellipse(rightcircle_posx, height/2, rectSize, rectSize);
+  // right_circle(rectSize);
+  // left_circle(rectSize);
   
    // display "words"
    textAlign(CENTER);
