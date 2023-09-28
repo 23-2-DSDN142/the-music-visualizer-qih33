@@ -18,10 +18,10 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   let mappedColorLerp = map(vocal, 0, 100, 0, 0.5);
   let colorLerp = lerpColor(red, yellow, mappedColorLerp);
 
-  fill(colorLerp);
-  ellipse(width/2, height/2, rectSize, rectSize);
  
-  ellipse(rightcircle_posx, height/2, rectSize, rectSize);
+  // ellipse(width/2, height/2, rectSize, rectSize);
+ 
+  // ellipse(rightcircle_posx, height/2, rectSize, rectSize);
   // right_circle(rectSize);
   // left_circle(rectSize);
   
@@ -29,6 +29,11 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    textAlign(CENTER);
    textSize(vocal);
    text(words, width/2, height/3);
+
+   fill(colorLerp);
+   for (let i = 0; i < 450; i += 90) {
+    ellipse(rightcircle_posx + i, height/2, 50, 50);
+  }
 }
 
 
