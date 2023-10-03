@@ -15,24 +15,26 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
   
   let rectSize = map(drum, 0, 100, 50, width/2);
-  let mappedColorLerp = map(vocal, 0, 100, 0, 0.5);
-  let colorLerp = lerpColor(red, yellow, mappedColorLerp);
+  // let mappedColorLerp = map(vocal, 0, 100, 0, 0.5);
+  // let colorLerp = lerpColor(red, yellow, mappedColorLerp);
 
  
   // ellipse(width/2, height/2, rectSize, rectSize);
  
-  // ellipse(rightcircle_posx, height/2, rectSize, rectSize);
+  
   // right_circle(rectSize);
   // left_circle(rectSize);
   
    // display "words"
-   textAlign(CENTER);
-   textSize(vocal);
-   text(words, width/2, height/3);
-
+  //  textAlign(CENTER);
+  //  textSize(vocal);
+  //  text(words, width/2, height/3);
+  
+   let mappedColorLerp = map(vocal, 0, 100, 0, 0.5);
+   let colorLerp = lerpColor(red, yellow, mappedColorLerp);
    fill(colorLerp);
    for (let i = 0; i < 450; i += 90) {
-    ellipse(rightcircle_posx + i, height/2, 50, 50);
+    ellipse(470 + i, height/2, 50, 50);
   }
 }
 
