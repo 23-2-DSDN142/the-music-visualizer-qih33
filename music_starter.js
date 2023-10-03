@@ -25,12 +25,12 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   
   right_circle(rectSize);
   left_circle(rectSize);
-  load_circles();
+  // load_circles();
 
   // var posX = random(30, 31);
   // var posY = random(500,515);
   // // console.log(posX);
-  ellipse(posX, posY, 40, 40);
+  // ellipse(posX, posY, 40, 40);
   // ellipse(random(100), random(800), 40, 40);
   // ellipse(random(100), random(800), 40, 40);
   // ellipse(random(100), random(800), 40, 40);
