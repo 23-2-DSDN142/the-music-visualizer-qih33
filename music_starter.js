@@ -24,18 +24,15 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   let colorLerp = lerpColor(red, yellow, mappedColorLerp);
   fill(colorLerp);
   
-  if (distance < 1289){
-    for (let distance = 0; distance < 1289; distance++){
+  let vocalFrame = int(map(other, 1,100, 0,3));
+   
       push();
       scale(1);
-      image(Cat[0], 0, height/2);
-      image(Cat[1], 0, height/2);
-      image(Cat[2], 0, height/2);
-      image(Cat[3], 0, height/2);
+      image(Cat[vocalFrame], width/2, height/2);
       pop();
-    }
+    
    
-  }
+  
  
  
   // ellipse(width/2, height/2, rectSize, rectSize);
