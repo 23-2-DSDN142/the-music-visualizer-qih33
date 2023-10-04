@@ -1,15 +1,19 @@
 var leftcircle_posx = 1289/2;
 var rightcircle_posx = 1289/2;
+var distance = 0;
 var isLeftcircle = false;
 var isRighrcircle = false;
 var circles = [];
+var Cat = [];
+var firstRun = true;
+
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   background(20)
   textFont('Helvetica'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(24);
-  // console.log(counter);
+  load_cat();
 
   let red = color(245, 66, 66);
   let yellow = color(245, 236, 66);
@@ -19,12 +23,26 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   let mappedColorLerp = map(vocal, 0, 100, 0, 0.5);
   let colorLerp = lerpColor(red, yellow, mappedColorLerp);
   fill(colorLerp);
+  
+  if (distance < 1289){
+    for (let distance = 0; distance < 1289; distance++){
+      push();
+      scale(1);
+      image(Cat[0], 0, height/2);
+      image(Cat[1], 0, height/2);
+      image(Cat[2], 0, height/2);
+      image(Cat[3], 0, height/2);
+      pop();
+    }
+   
+  }
  
-  ellipse(width/2, height/2, rectSize, rectSize);
+ 
+  // ellipse(width/2, height/2, rectSize, rectSize);
  
   
-  right_circle(rectSize);
-  left_circle(rectSize);
+  // right_circle(rectSize);
+  // left_circle(rectSize);
   // load_circles();
 
   // var posX = random(30, 31);
@@ -42,6 +60,17 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    textSize(vocal);
    text(words, width/2, height/3);
   
+}
+
+function load_cat(){
+  if (firstRun) {
+    rectMode(CENTER);
+    Cat.push(loadImage('cat_0.png'));
+    Cat.push(loadImage('cat_1.png'));
+    Cat.push(loadImage('cat_2.png'));
+    Cat.push(loadImage('cat_3.png'));
+    firstRun = false;
+  }
 }
 
 function load_circles(){
