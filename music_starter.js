@@ -18,24 +18,19 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   let red = color(245, 66, 66);
   let yellow = color(245, 236, 66);
 
-  let catStartX = 0 
-  let catEndX = width
-
-  let catXLoki = map(song.currentTime(), 0, song.duration(), catStartX ,catEndX);
-  console.log(currentTime)
+  
   let rectSize = map(drum, 0, 100, 50, width/2);
   let mappedColorLerp = map(vocal, 0, 100, 0, 0.5);
   let colorLerp = lerpColor(red, yellow, mappedColorLerp);
   fill(colorLerp);
+  console.log(song.currentTime())
+
+  if (song.currentTime() > 11.3973125){
+    cat_walk();
+  }
+  // cat_walk();
   
-  let vocalFrame = int(map(other, 1,100, 0,3));
-  console.log(int(song.currentTime()%4))
-   
-      push();
-      scale(1);
-     // image(Cat[vocalFrame],catXLoki, height/2);
-      image(Cat[int((song.currentTime()*3)%4)],catXLoki, height/2);
-      pop();
+ 
     
    
   
@@ -74,6 +69,19 @@ function load_cat(){
     Cat.push(loadImage('cat_3.png'));
     firstRun = false;
   }
+}
+
+function cat_walk(){
+
+  let catStartX = 0 
+  let catEndX = width
+  let catXLoki = map(song.currentTime(), 0, song.duration(), catStartX ,catEndX);
+  // let otherFrame = int(map(other, 1,100, 0,3));
+  push();
+  scale(1);
+  image(Cat[int((song.currentTime()*3)%4)],catXLoki, height/2);
+  pop();
+
 }
 
 function load_circles(){
