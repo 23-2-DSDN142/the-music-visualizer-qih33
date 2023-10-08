@@ -23,41 +23,71 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   let mappedColorLerp = map(vocal, 0, 100, 0, 0.5);
   let colorLerp = lerpColor(red, yellow, mappedColorLerp);
   fill(colorLerp);
-  console.log(song.currentTime())
+   console.log(song.currentTime())
+  ellipse(width/2, height/2, rectSize, rectSize);
 
-  if (song.currentTime() > 11.3973125){
+ 
+
+  load_circles();
+  display_circle(words, vocal, drum, bass, other, counter);
+ 
+  if (song.currentTime()> 5.3)
+  {
+    fill(colorLerp);
+    right_circle(rectSize);
+    left_circle(rectSize);
+  }
+ 
+
+ 
+  if (song.currentTime() > 11.3973125 && song.currentTime() < 11.3973125){
     cat_walk();
   }
-  // cat_walk();
-  
- 
-    
-   
-  
- 
- 
-  // ellipse(width/2, height/2, rectSize, rectSize);
- 
-  
-  // right_circle(rectSize);
-  // left_circle(rectSize);
-  // load_circles();
-
-  // var posX = random(30, 31);
-  // var posY = random(500,515);
-  // // console.log(posX);
-  // ellipse(posX, posY, 40, 40);
-  // ellipse(random(100), random(800), 40, 40);
-  // ellipse(random(100), random(800), 40, 40);
-  // ellipse(random(100), random(800), 40, 40);
-
-
   
   //  display "words"
    textAlign(CENTER);
    textSize(vocal);
-   text(words, width/2, height/3);
-  
+   text(words, width/2, height/3); 
+}
+
+function display_circle(words, vocal, drum, bass, other, counter){
+
+  let grey = color(227, 81, 68);
+  let gold = color(68, 227, 219);
+  let mappedColorLerp = map(drum, 0, 100, 0, 0.5);
+  let colorLerp = lerpColor(grey, gold, mappedColorLerp);
+  fill(colorLerp);
+    circles[0].posX = 30;
+    circles[0].posY = 30;
+    ellipse(circles[0].posX, circles[0].posY, 50, 50);
+    
+    circles[1].posX = 30;
+    circles[1].posY = 80;
+    ellipse(circles[1].posX, circles[1].posY, 50, 50);
+
+    circles[2].posX = 30;
+    circles[2].posY = 130;
+    ellipse(circles[2].posX, circles[2].posY, 50, 50);
+
+    circles[3].posX = 80;
+    circles[3].posY = 30;
+    ellipse(circles[3].posX, circles[3].posY, 50, 50);
+
+    circles[4].posX = 1259;
+    circles[4].posY = 30;
+    ellipse(circles[4].posX, circles[4].posY, 50, 50);
+    
+    circles[5].posX = 1209;
+    circles[5].posY = 30;
+    ellipse(circles[5].posX, circles[5].posY, 50, 50);
+   
+    circles[6].posX = 1259;
+    circles[6].posY = 80;
+    ellipse(circles[6].posX, circles[6].posY, 50, 50);
+
+    circles[7].posX = 1259;
+    circles[7].posY = 130;
+    ellipse(circles[7].posX, circles[7].posY, 50, 50);    
 }
 
 function load_cat(){
@@ -73,8 +103,8 @@ function load_cat(){
 
 function cat_walk(){
 
-  let catStartX = 0 
-  let catEndX = width
+  let catStartX = 0;
+  let catEndX = 500;
   let catXLoki = map(song.currentTime(), 0, song.duration(), catStartX ,catEndX);
   // let otherFrame = int(map(other, 1,100, 0,3));
   push();
@@ -85,11 +115,10 @@ function cat_walk(){
 }
 
 function load_circles(){
- 
+  let posX = 30;
+  let posY = 500;
   for (let i = 0; i < 15; i++)
   {
-    let posX = random(30, 100);
-    let posY = random(500, 800);
     let myCircle = new Circle(posX, posY, 40);
     myCircle.x = posX;
     myCircle.y = posY;
