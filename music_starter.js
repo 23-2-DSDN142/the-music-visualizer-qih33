@@ -6,6 +6,12 @@ var isRighrcircle = false;
 var circles = [];
 var Cat = [];
 var firstRun = true;
+var isShanghai = true;
+var shanghai;
+var isHongKong = true;
+var HongKong;
+var isBoat = true;
+var Boat = [];
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
@@ -24,25 +30,33 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   let colorLerp = lerpColor(red, yellow, mappedColorLerp);
   fill(colorLerp);
   //  console.log(song.currentTime())
-  ellipse(width/2, height/2, rectSize, rectSize);
+  // ellipse(width/2, height/2, rectSize, rectSize);
 
  
 
-  load_circles();
-  display_circle(words, vocal, drum, bass, other, counter);
+  // load_circles();
+  // display_circle(words, vocal, drum, bass, other, counter);
  
-  if (song.currentTime()> 5.3 && song.currentTime()< 138.9013125)
-  {
-    fill(colorLerp);
-    right_circle(rectSize);
-    left_circle(rectSize);
-  }
+  // if (song.currentTime()> 5.3 && song.currentTime()< 138.9013125)
+  // {
+  //   fill(colorLerp);
+  //   right_circle(rectSize);
+  //   left_circle(rectSize);
+  // }
  
-
  
-  if (song.currentTime() > 15.1093125){
+  // if (song.currentTime() > 15.1093125){
     cat_walk();
-  }
+    load_hongKang();
+    display_hongKang();
+    // load_boat();
+    // display_boat(drum);
+    // if (song.currentTime()< 100.01064583333333){
+    //   load_shanghai();
+    //   display_shanghai();
+    // }
+   
+  // }
  
   // stroke(colorLerp);
   // strokeWeight(4);
@@ -56,6 +70,50 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    textSize(vocal);
    text(words, width/2, height/3); 
 }
+
+function load_boat(){
+  if (isBoat){
+    rectMode(CENTER);
+    Boat.push(loadImage('boat_0.png'));
+    Boat.push(loadImage('boat_1.png'));
+    isBoat = false;
+  }
+}
+
+function display_boat(drum){
+  var vocalFrame = int (map(drum, 0, 100, 0,2));
+  console.log(vocalFrame);
+  push();
+  scale(1);
+  image(Boat[vocalFrame], width/2, height/2);
+}
+
+function load_hongKang(){
+  if (isHongKong){
+    rectMode(CENTER);
+    shanghai = loadImage('hongkong.png');
+    isHongKong = false;
+  }  
+}
+
+function display_hongKang(){
+  scale(2.0);
+  image(shanghai, 100, 50);
+}
+
+function load_shanghai(){
+  if (isShanghai){
+    rectMode(CENTER);
+    shanghai = loadImage('shanghai.png');
+    isShanghai = false;
+  }  
+}
+
+function display_shanghai(){
+  scale(2.0);
+  image(shanghai, 100, 50);
+}
+
 
 function display_circle(words, vocal, drum, bass, other, counter){
 
@@ -116,61 +174,61 @@ function cat_walk(){
   // let otherFrame = int(map(other, 1,100, 0,3));
   push();
   scale(1);
-  image(Cat[int((song.currentTime()*3)%4)],catXLoki, 900);
+  image(Cat[int((song.currentTime()*3)%4)],catXLoki, 600);
   pop();
 
 }
 
-function load_circles(){
-  let posX = 30;
-  let posY = 500;
-  for (let i = 0; i < 15; i++)
-  {
-    let myCircle = new Circle(posX, posY, 40);
-    myCircle.x = posX;
-    myCircle.y = posY;
-    circles.push(myCircle);
-  }
+// function load_circles(){
+//   let posX = 30;
+//   let posY = 500;
+//   for (let i = 0; i < 15; i++)
+//   {
+//     let myCircle = new Circle(posX, posY, 40);
+//     myCircle.x = posX;
+//     myCircle.y = posY;
+//     circles.push(myCircle);
+//   }
 
-}
+// }
 
 
-function right_circle(rectSize){
-  //right circle
-    if (rightcircle_posx < 1144){
-        rightcircle_posx++
-        ellipse(rightcircle_posx, height/2, rectSize/2, rectSize/2);
-    }
+// function right_circle(rectSize){
+//   //right circle
+//     if (rightcircle_posx < 1144){
+//         rightcircle_posx++
+//         ellipse(rightcircle_posx, height/2, rectSize/2, rectSize/2);
+//     }
 
-    if (rightcircle_posx > 1144){
-        isRighrcircle = true;
-    }
-    if (isRighrcircle)
-    {
-      ellipse(rightcircle_posx, height/2, rectSize/2, rectSize/2);
-    }
-}
+//     if (rightcircle_posx > 1144){
+//         isRighrcircle = true;
+//     }
+//     if (isRighrcircle)
+//     {
+//       ellipse(rightcircle_posx, height/2, rectSize/2, rectSize/2);
+//     }
+// }
 
-function left_circle(rectSize){
-  if (leftcircle_posx > 145){
-    leftcircle_posx--
-    ellipse(leftcircle_posx, height/2, rectSize/2, rectSize/2);
-  }
+// function left_circle(rectSize){
+//   if (leftcircle_posx > 145){
+//     leftcircle_posx--
+//     ellipse(leftcircle_posx, height/2, rectSize/2, rectSize/2);
+//   }
 
-  if (leftcircle_posx < 145){
-    isLeftcircle = true;
-  }
-  if (isLeftcircle)
-  {
-    ellipse(leftcircle_posx, height/2, rectSize/2, rectSize/2);
-  }
-}
+//   if (leftcircle_posx < 145){
+//     isLeftcircle = true;
+//   }
+//   if (isLeftcircle)
+//   {
+//     ellipse(leftcircle_posx, height/2, rectSize/2, rectSize/2);
+//   }
+// }
 
-class Circle {
-  constructor(x, y, size) {
-    this.x = x;
-    this.y = y;
-    this.size = size;
+// class Circle {
+//   constructor(x, y, size) {
+//     this.x = x;
+//     this.y = y;
+//     this.size = size;
    
-  }
-}
+//   }
+// }
