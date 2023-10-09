@@ -23,7 +23,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   let mappedColorLerp = map(vocal, 0, 100, 0, 0.5);
   let colorLerp = lerpColor(red, yellow, mappedColorLerp);
   fill(colorLerp);
-   console.log(song.currentTime())
+  //  console.log(song.currentTime())
   ellipse(width/2, height/2, rectSize, rectSize);
 
  
@@ -31,7 +31,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   load_circles();
   display_circle(words, vocal, drum, bass, other, counter);
  
-  if (song.currentTime()> 5.3)
+  if (song.currentTime()> 5.3 && song.currentTime()< 138.9013125)
   {
     fill(colorLerp);
     right_circle(rectSize);
@@ -40,9 +40,16 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
  
 
  
-  if (song.currentTime() > 11.3973125 && song.currentTime() < 11.3973125){
+  if (song.currentTime() > 15.1093125){
     cat_walk();
   }
+ 
+  // stroke(colorLerp);
+  // strokeWeight(4);
+  // line(500, 500, 800, 500);
+
+
+
   
   //  display "words"
    textAlign(CENTER);
@@ -52,11 +59,11 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
 function display_circle(words, vocal, drum, bass, other, counter){
 
-  let grey = color(227, 81, 68);
-  let gold = color(68, 227, 219);
-  let mappedColorLerp = map(drum, 0, 100, 0, 0.5);
-  let colorLerp = lerpColor(grey, gold, mappedColorLerp);
-  fill(colorLerp);
+    let grey = color(227, 81, 68);
+    let gold = color(68, 227, 219);
+    let mappedColorLerp = map(drum, 0, 100, 0, 0.5);
+    let colorLerp = lerpColor(grey, gold, mappedColorLerp);
+    fill(colorLerp);
     circles[0].posX = 30;
     circles[0].posY = 30;
     ellipse(circles[0].posX, circles[0].posY, 50, 50);
@@ -104,12 +111,12 @@ function load_cat(){
 function cat_walk(){
 
   let catStartX = 0;
-  let catEndX = 500;
+  let catEndX = width;
   let catXLoki = map(song.currentTime(), 0, song.duration(), catStartX ,catEndX);
   // let otherFrame = int(map(other, 1,100, 0,3));
   push();
   scale(1);
-  image(Cat[int((song.currentTime()*3)%4)],catXLoki, height/2);
+  image(Cat[int((song.currentTime()*3)%4)],catXLoki, 900);
   pop();
 
 }
@@ -132,7 +139,7 @@ function right_circle(rectSize){
   //right circle
     if (rightcircle_posx < 1144){
         rightcircle_posx++
-        ellipse(rightcircle_posx, height/2, rectSize, rectSize);
+        ellipse(rightcircle_posx, height/2, rectSize/2, rectSize/2);
     }
 
     if (rightcircle_posx > 1144){
@@ -147,7 +154,7 @@ function right_circle(rectSize){
 function left_circle(rectSize){
   if (leftcircle_posx > 145){
     leftcircle_posx--
-    ellipse(leftcircle_posx, height/2, rectSize, rectSize);
+    ellipse(leftcircle_posx, height/2, rectSize/2, rectSize/2);
   }
 
   if (leftcircle_posx < 145){
