@@ -71,34 +71,34 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    text(words, width/2, height/3); 
 }
 
-function load_boat(){
-  if (isBoat){
-    rectMode(CENTER);
-    Boat.push(loadImage('boat_0.png'));
-    Boat.push(loadImage('boat_1.png'));
-    isBoat = false;
-  }
-}
+// function load_boat(){
+//   if (isBoat){
+//     rectMode(CENTER);
+//     Boat.push(loadImage('boat_0.png'));
+//     Boat.push(loadImage('boat_1.png'));
+//     isBoat = false;
+//   }
+// }
 
-function display_boat(drum){
-  var vocalFrame = int (map(drum, 0, 100, 0,2));
-  console.log(vocalFrame);
-  push();
-  scale(1);
-  image(Boat[vocalFrame], width/2, height/2);
-}
+// function display_boat(drum){
+//   var vocalFrame = int (map(drum, 0, 100, 0,2));
+//   console.log(vocalFrame);
+//   push();
+//   scale(1);
+//   image(Boat[vocalFrame], 100, 50);
+// }
 
 function load_hongKang(){
   if (isHongKong){
     rectMode(CENTER);
-    shanghai = loadImage('hongkong.png');
+    HongKong = loadImage('hongkong.png');
     isHongKong = false;
   }  
 }
 
 function display_hongKang(){
-  scale(2.0);
-  image(shanghai, 100, 50);
+  scale(2);
+  image(HongKong, 150, 30);
 }
 
 function load_shanghai(){
@@ -174,7 +174,7 @@ function cat_walk(){
   // let otherFrame = int(map(other, 1,100, 0,3));
   push();
   scale(1);
-  image(Cat[int((song.currentTime()*3)%4)],catXLoki, 600);
+  image(Cat[int((song.currentTime()*3)%4)],catXLoki, 650);
   pop();
 
 }
