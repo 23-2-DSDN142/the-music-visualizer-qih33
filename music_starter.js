@@ -22,14 +22,14 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   textSize(24);
   load_cat();
 
-  let red = color(245, 66, 66);
-  let yellow = color(245, 236, 66);
+  // let red = color(245, 66, 66);
+  // let yellow = color(245, 236, 66);
 
   
-  let rectSize = map(drum, 0, 100, 50, width/2);
-  let mappedColorLerp = map(vocal, 0, 100, 0, 0.5);
-  let colorLerp = lerpColor(red, yellow, mappedColorLerp);
-  fill(colorLerp);
+  // let rectSize = map(drum, 0, 100, 50, width/2);
+  // let mappedColorLerp = map(bass, 0, 100, 0, 0.5);
+  // let colorLerp = lerpColor(red, yellow, mappedColorLerp);
+  // fill(colorLerp);
   //  console.log(song.currentTime())
   // ellipse(width/2, height/2, rectSize, rectSize);
 
@@ -45,26 +45,22 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   //   left_circle(rectSize);
   // }
  
- 
-  // if (song.currentTime() > 15.1093125){
     cat_walk();
-    // load_hongKang();
-    // display_hongKang();
-    // load_boat();
-    // display_boat(drum);
-    // if (song.currentTime()< 100.01064583333333){
+   
+   
+    if (song.currentTime()< 138.9013125){
       load_shanghai();
       display_shanghai();
       load_sun();
-      display_sun(vocal);
-    // }
+      display_sun(drum);
+    }
    
-  // }
- 
-  // stroke(colorLerp);
-  // strokeWeight(4);
-  // line(500, 500, 800, 500);
-
+   if (song.currentTime() > 138.9013125){
+      load_hongKang();
+      display_hongKang();
+      load_circles();
+      display_circle(words, vocal, drum, bass, other, counter);
+   }
 
 
   
@@ -104,42 +100,47 @@ function display_shanghai(){
 
 function display_circle(words, vocal, drum, bass, other, counter){
 
-    let grey = color(227, 81, 68);
-    let gold = color(68, 227, 219);
-    let mappedColorLerp = map(drum, 0, 100, 0, 0.5);
-    let colorLerp = lerpColor(grey, gold, mappedColorLerp);
-    fill(colorLerp);
-    circles[0].posX = 30;
-    circles[0].posY = 30;
-    ellipse(circles[0].posX, circles[0].posY, 50, 50);
+  let lightBlue = color(151, 185, 240);
+  let grey = color(210, 212, 214);
+  let rectSize = map(drum, 0, 100, 50, width/2);
+  let mappedColorLerp = map(bass, 0, 100, 0, 0.5);
+  let colorLerp = lerpColor(lightBlue, grey, mappedColorLerp);
+  let newSize = map(vocal, 0, 100, 50, width/2);
+  fill(colorLerp);
+
+    circles[0].posX = 300;
+    circles[0].posY = 50;
+    scale(0.5);
+    ellipse(circles[0].posX, circles[0].posY, rectSize/16, rectSize/16);
     
-    circles[1].posX = 30;
+    circles[1].posX = 750;
     circles[1].posY = 80;
-    ellipse(circles[1].posX, circles[1].posY, 50, 50);
+    scale(0.5);
+    ellipse(circles[1].posX, circles[1].posY, newSize/16, newSize/16);
 
-    circles[2].posX = 30;
+    circles[2].posX = 800;
     circles[2].posY = 130;
-    ellipse(circles[2].posX, circles[2].posY, 50, 50);
+    ellipse(circles[2].posX, circles[2].posY, rectSize/16, rectSize/16);
 
-    circles[3].posX = 80;
+    circles[3].posX = 500;
     circles[3].posY = 30;
-    ellipse(circles[3].posX, circles[3].posY, 50, 50);
+    ellipse(circles[3].posX, circles[3].posY, newSize/16, newSize/16);
 
-    circles[4].posX = 1259;
-    circles[4].posY = 30;
-    ellipse(circles[4].posX, circles[4].posY, 50, 50);
+    circles[4].posX = 1000;
+    circles[4].posY = 60;
+    ellipse(circles[4].posX, circles[4].posY, rectSize/16, rectSize/16);
     
     circles[5].posX = 1209;
     circles[5].posY = 30;
-    ellipse(circles[5].posX, circles[5].posY, 50, 50);
+    ellipse(circles[5].posX, circles[5].posY, rectSize/16, rectSize/16);
    
     circles[6].posX = 1259;
     circles[6].posY = 80;
-    ellipse(circles[6].posX, circles[6].posY, 50, 50);
+    ellipse(circles[6].posX, circles[6].posY, newSize/16, newSize/16);
 
-    circles[7].posX = 1259;
+    circles[7].posX = 1359;
     circles[7].posY = 130;
-    ellipse(circles[7].posX, circles[7].posY, 50, 50);    
+    ellipse(circles[7].posX, circles[7].posY, newSize/16, newSize/16);    
 }
 
 function load_cat(){
@@ -171,31 +172,31 @@ function load_sun(){
     rectMode(CENTER);
     Sun.push(loadImage('sun_0.png'));
     Sun.push(loadImage('sun_1.png'));
-    Sun.push(loadImage('sun_2.png'));
+    // Sun.push(loadImage('sun_2.png'));
     isSun = false;
   }
 }
 
 function display_sun(vocal){
-  var vocalFrame = int(map(vocal, 0, 100, 0,3));
+  var vocalFrame = int(map(vocal, 0, 100, 0,2));
   push();
   scale(0.5);
   image(Sun[vocalFrame], 100, 50);
   pop();
 }
 
-// function load_circles(){
-//   let posX = 30;
-//   let posY = 500;
-//   for (let i = 0; i < 15; i++)
-//   {
-//     let myCircle = new Circle(posX, posY, 40);
-//     myCircle.x = posX;
-//     myCircle.y = posY;
-//     circles.push(myCircle);
-//   }
+function load_circles(){
+  let posX = 30;
+  let posY = 500;
+  for (let i = 0; i < 15; i++)
+  {
+    let myCircle = new Circle(posX, posY, 40);
+    myCircle.x = posX;
+    myCircle.y = posY;
+    circles.push(myCircle);
+  }
 
-// }
+}
 
 
 // function right_circle(rectSize){
@@ -229,11 +230,11 @@ function display_sun(vocal){
 //   }
 // }
 
-// class Circle {
-//   constructor(x, y, size) {
-//     this.x = x;
-//     this.y = y;
-//     this.size = size;
+class Circle {
+  constructor(x, y, size) {
+    this.x = x;
+    this.y = y;
+    this.size = size;
    
-//   }
-// }
+  }
+}
