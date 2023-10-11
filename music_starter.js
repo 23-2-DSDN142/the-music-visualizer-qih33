@@ -30,7 +30,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
       load_shanghai();
       display_shanghai();
       load_sun();
-      display_sun(drum);
+      display_sun(other);
     }
    
    if (song.currentTime() > 138.9013125){
@@ -155,12 +155,21 @@ function load_sun(){
   }
 }
 
-function display_sun(vocal){
-  var vocalFrame = int(map(vocal, 0, 100, 0,2));
+function display_sun(counter){
+  var vocalFrame = int(map(counter, 0, 100, 0,2));
+
+  console.log(vocalFrame)
   push();
   scale(0.5);
+
   image(Sun[vocalFrame], 100, 50);
   pop();
+  
+  // push()
+  //  scale(0.5);
+
+  // image(Sun[vocalFrame], 100, 50);
+  // pop()
 }
 
 function load_circles(){
