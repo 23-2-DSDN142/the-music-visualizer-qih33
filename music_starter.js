@@ -10,8 +10,9 @@ var isShanghai = true;
 var shanghai;
 var isHongKong = true;
 var HongKong;
-var isBoat = true;
-var Boat = [];
+var Sun = [];
+var isSun = true;
+
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
@@ -47,13 +48,15 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
  
   // if (song.currentTime() > 15.1093125){
     cat_walk();
-    load_hongKang();
-    display_hongKang();
+    // load_hongKang();
+    // display_hongKang();
     // load_boat();
     // display_boat(drum);
     // if (song.currentTime()< 100.01064583333333){
-    //   load_shanghai();
-    //   display_shanghai();
+      load_shanghai();
+      display_shanghai();
+      load_sun();
+      display_sun(vocal);
     // }
    
   // }
@@ -71,22 +74,6 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    text(words, width/2, height/3); 
 }
 
-// function load_boat(){
-//   if (isBoat){
-//     rectMode(CENTER);
-//     Boat.push(loadImage('boat_0.png'));
-//     Boat.push(loadImage('boat_1.png'));
-//     isBoat = false;
-//   }
-// }
-
-// function display_boat(drum){
-//   var vocalFrame = int (map(drum, 0, 100, 0,2));
-//   console.log(vocalFrame);
-//   push();
-//   scale(1);
-//   image(Boat[vocalFrame], 100, 50);
-// }
 
 function load_hongKang(){
   if (isHongKong){
@@ -177,6 +164,24 @@ function cat_walk(){
   image(Cat[int((song.currentTime()*3)%4)],catXLoki, 650);
   pop();
 
+}
+
+function load_sun(){
+  if (isSun) {
+    rectMode(CENTER);
+    Sun.push(loadImage('sun_0.png'));
+    Sun.push(loadImage('sun_1.png'));
+    Sun.push(loadImage('sun_2.png'));
+    isSun = false;
+  }
+}
+
+function display_sun(vocal){
+  var vocalFrame = int(map(vocal, 0, 100, 0,3));
+  push();
+  scale(0.5);
+  image(Sun[vocalFrame], 100, 50);
+  pop();
 }
 
 // function load_circles(){
