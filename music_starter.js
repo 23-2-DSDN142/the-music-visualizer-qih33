@@ -22,28 +22,6 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   textSize(24);
   load_cat();
 
-  // let red = color(245, 66, 66);
-  // let yellow = color(245, 236, 66);
-
-  
-  // let rectSize = map(drum, 0, 100, 50, width/2);
-  // let mappedColorLerp = map(bass, 0, 100, 0, 0.5);
-  // let colorLerp = lerpColor(red, yellow, mappedColorLerp);
-  // fill(colorLerp);
-  //  console.log(song.currentTime())
-  // ellipse(width/2, height/2, rectSize, rectSize);
-
- 
-
-  // load_circles();
-  // display_circle(words, vocal, drum, bass, other, counter);
- 
-  // if (song.currentTime()> 5.3 && song.currentTime()< 138.9013125)
-  // {
-  //   fill(colorLerp);
-  //   right_circle(rectSize);
-  //   left_circle(rectSize);
-  // }
  
     cat_walk();
    
@@ -198,37 +176,6 @@ function load_circles(){
 
 }
 
-
-// function right_circle(rectSize){
-//   //right circle
-//     if (rightcircle_posx < 1144){
-//         rightcircle_posx++
-//         ellipse(rightcircle_posx, height/2, rectSize/2, rectSize/2);
-//     }
-
-//     if (rightcircle_posx > 1144){
-//         isRighrcircle = true;
-//     }
-//     if (isRighrcircle)
-//     {
-//       ellipse(rightcircle_posx, height/2, rectSize/2, rectSize/2);
-//     }
-// }
-
-// function left_circle(rectSize){
-//   if (leftcircle_posx > 145){
-//     leftcircle_posx--
-//     ellipse(leftcircle_posx, height/2, rectSize/2, rectSize/2);
-//   }
-
-//   if (leftcircle_posx < 145){
-//     isLeftcircle = true;
-//   }
-//   if (isLeftcircle)
-//   {
-//     ellipse(leftcircle_posx, height/2, rectSize/2, rectSize/2);
-//   }
-// }
 
 class Circle {
   constructor(x, y, size) {
