@@ -30,7 +30,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
       load_shanghai();
       display_shanghai();
       load_sun();
-      display_sun(other);
+      display_sun(vocal);
     }
    
    if (song.currentTime() > 138.9013125){
@@ -150,17 +150,18 @@ function load_sun(){
     rectMode(CENTER);
     Sun.push(loadImage('sun_0.png'));
     Sun.push(loadImage('sun_1.png'));
-    // Sun.push(loadImage('sun_2.png'));
+    Sun.push(loadImage('sun_2.png'));
+    Sun.push(loadImage('sun_3.png'));
     isSun = false;
   }
 }
 
-function display_sun(other){
-  var vocalFrame = int(map(other, 0, 100, 0, 2));
+function display_sun(vocal){
+  var vocalFrame = int(map(vocal, 0, 100, 0, 3));
 
   console.log(vocalFrame)
   push();
-  scale(0.5);
+  scale(0.4);
 
   image(Sun[vocalFrame], 100, 50);
   pop();
