@@ -155,8 +155,8 @@ function load_sun(){
   }
 }
 
-function display_sun(counter){
-  var vocalFrame = int(map(counter, 0, 100, 0,2));
+function display_sun(other){
+  var vocalFrame = int(map(other, 0, 100, 0, 2));
 
   console.log(vocalFrame)
   push();
