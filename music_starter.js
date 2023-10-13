@@ -25,15 +25,20 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
  
     cat_walk();
    
-   
-    if (song.currentTime()< 138.9013125){
+   console.log(song.currentTime())
+    if (song.currentTime()< 70.69864583333333){
       load_shanghai();
       display_shanghai();
+      
       load_sun();
-      display_sun(vocal);
+      if (song.currentTime()> 15.066645833333334)
+      {
+        display_sun(vocal);
+      }
+      
     }
    
-   if (song.currentTime() > 138.9013125){
+   if (song.currentTime() > 70.69864583333333){
       load_hongKang();
       display_hongKang();
       load_circles();
@@ -41,11 +46,12 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    }
 
 
+
   
   //  display "words"
    textAlign(CENTER);
-   textSize(vocal);
-   text(words, width/2, height/3); 
+   textSize(other);
+   text(words, 1400, 330); 
 }
 
 
@@ -119,6 +125,18 @@ function display_circle(words, vocal, drum, bass, other, counter){
     circles[7].posX = 1359;
     circles[7].posY = 130;
     ellipse(circles[7].posX, circles[7].posY, newSize/16, newSize/16);    
+
+    circles[8].posX = 1459;
+    circles[8].posY = 180;
+    ellipse(circles[8].posX, circles[8].posY, newSize/16, newSize/16);  
+    
+    circles[9].posX = 700;
+    circles[9].posY = 180;
+    ellipse(circles[9].posX, circles[9].posY, newSize/16, newSize/16);    
+
+    circles[10].posX = 600;
+    circles[10].posY = 180;
+    ellipse(circles[10].posX, circles[10].posY, rectSize/16, rectSize/16);    
 }
 
 function load_cat(){
@@ -158,19 +176,10 @@ function load_sun(){
 
 function display_sun(vocal){
   var vocalFrame = int(map(vocal, 0, 100, 0, 3));
-
-  console.log(vocalFrame)
   push();
   scale(0.4);
-
   image(Sun[vocalFrame], 100, 50);
   pop();
-  
-  // push()
-  //  scale(0.5);
-
-  // image(Sun[vocalFrame], 100, 50);
-  // pop()
 }
 
 function load_circles(){
