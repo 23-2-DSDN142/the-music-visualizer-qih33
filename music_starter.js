@@ -23,9 +23,12 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   load_cat();
 
  
-    cat_walk();
+  cat_walk();
+  display_leftlines(other);
+  display_rightlines(other);
+
    
-   console.log(song.currentTime())
+  //  console.log(song.currentTime())
     if (song.currentTime()< 70.69864583333333){
       load_shanghai();
       display_shanghai();
@@ -48,10 +51,10 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
 
   
-  //  display "words"
-   textAlign(CENTER);
-   textSize(other);
-   text(words, 1400, 330); 
+  // //  display "words"
+  //  textAlign(CENTER);
+  //  textSize(other);
+  //  text(words, 1400, 330); 
 }
 
 
@@ -79,6 +82,50 @@ function load_shanghai(){
 function display_shanghai(){
   scale(2.0);
   image(shanghai, 100, 50);
+}
+
+function display_leftlines(other)
+{
+  let lightBlue = color(151, 185, 240);
+  let grey = color(210, 212, 214);
+  let mappedColorLerp = map(other, 0, 100, 0, 0.5);
+  let colorLerp = lerpColor(lightBlue, grey, mappedColorLerp);
+  
+  fill(colorLerp);
+  // colorMode(HSB, 100);
+  strokeWeight(9);
+  stroke(other, 80, 80);
+  var otherMap = map(other, 1, 100, 5,30);
+  var lengthOfLine = 100;
+  var lineStart = 60;
+  var lineEnd = lineStart + lengthOfLine;
+  var lineStep = 400;
+  for (var i = 1; i<= otherMap; i++){
+    lineStep += 10;
+    line(lineStart, lineStep, lineEnd, lineStep);
+  }
+}
+
+function display_rightlines(other)
+{
+  let lightBlue = color(151, 185, 240);
+  let grey = color(210, 212, 214);
+  let mappedColorLerp = map(other, 0, 100, 0, 0.5);
+  let colorLerp = lerpColor(lightBlue, grey, mappedColorLerp);
+  
+  fill(colorLerp);
+  // colorMode(HSB, 100);
+  strokeWeight(9);
+  stroke(other, 80, 80);
+  var otherMap = map(other, 1, 100, 5,30);
+  var lengthOfLine = 100;
+  var lineStart = 1100;
+  var lineEnd = lineStart + lengthOfLine;
+  var lineStep = 400;
+  for (var i = 1; i<= otherMap; i++){
+    lineStep += 10;
+    line(lineStart, lineStep, lineEnd, lineStep);
+  }
 }
 
 
