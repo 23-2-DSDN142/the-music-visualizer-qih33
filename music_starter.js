@@ -1,9 +1,5 @@
-var leftcircle_posx = 1289/2;
-var rightcircle_posx = 1289/2;
 var distance = 0;
-var isLeftcircle = false;
-var isRighrcircle = false;
-var circles = [];
+var stars = [];
 var Cat = [];
 var firstRun = true;
 var isShanghai = true;
@@ -12,23 +8,20 @@ var isHongKong = true;
 var HongKong;
 var Sun = [];
 var isSun = true;
+var Moon = [];
+var isMoon =true;
 
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   background(20)
-  textFont('Helvetica'); // please use CSS safe fonts
-  rectMode(CENTER)
-  textSize(24);
   load_cat();
-
- 
   cat_walk();
   display_leftlines(other);
   display_rightlines(other);
 
    
-  //  console.log(song.currentTime())
+   console.log(song.currentTime())
     if (song.currentTime()< 70.69864583333333){
       load_shanghai();
       display_shanghai();
@@ -44,17 +37,12 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    if (song.currentTime() > 70.69864583333333){
       load_hongKang();
       display_hongKang();
-      load_circles();
-      display_circle(words, vocal, drum, bass, other, counter);
+      load_moon();
+      display_moon(vocal);
+      load_star();
+      display_star(words, vocal, drum, bass, other, counter);
    }
 
-
-
-  
-  // //  display "words"
-  //  textAlign(CENTER);
-  //  textSize(other);
-  //  text(words, 1400, 330); 
 }
 
 
@@ -86,15 +74,12 @@ function display_shanghai(){
 
 function display_leftlines(other)
 {
-  let lightBlue = color(151, 185, 240);
-  let grey = color(210, 212, 214);
+  let lightBlue = color(52, 85, 235);
+  let red = color(235, 52, 52);
   let mappedColorLerp = map(other, 0, 100, 0, 0.5);
-  let colorLerp = lerpColor(lightBlue, grey, mappedColorLerp);
-  
-  fill(colorLerp);
-  // colorMode(HSB, 100);
+  let colorLerp = lerpColor(lightBlue, red, mappedColorLerp);
   strokeWeight(9);
-  stroke(other, 80, 80);
+  stroke(colorLerp);
   var otherMap = map(other, 1, 100, 5,30);
   var lengthOfLine = 100;
   var lineStart = 60;
@@ -108,15 +93,12 @@ function display_leftlines(other)
 
 function display_rightlines(other)
 {
-  let lightBlue = color(151, 185, 240);
-  let grey = color(210, 212, 214);
+  let lightBlue = color(52, 85, 235);
+  let red = color(235, 52, 52);
   let mappedColorLerp = map(other, 0, 100, 0, 0.5);
-  let colorLerp = lerpColor(lightBlue, grey, mappedColorLerp);
-  
-  fill(colorLerp);
-  // colorMode(HSB, 100);
+  let colorLerp = lerpColor(lightBlue, red, mappedColorLerp);
   strokeWeight(9);
-  stroke(other, 80, 80);
+  stroke(colorLerp);
   var otherMap = map(other, 1, 100, 5,30);
   var lengthOfLine = 100;
   var lineStart = 1100;
@@ -129,7 +111,7 @@ function display_rightlines(other)
 }
 
 
-function display_circle(words, vocal, drum, bass, other, counter){
+function display_star(words, vocal, drum, bass, other, counter){
 
   let lightBlue = color(151, 185, 240);
   let grey = color(210, 212, 214);
@@ -141,51 +123,51 @@ function display_circle(words, vocal, drum, bass, other, counter){
   noStroke();
 
 
-    circles[0].posX = 300;
-    circles[0].posY = 50;
+    stars[0].posX = 300;
+    stars[0].posY = 50;
     scale(0.5);
-    ellipse(circles[0].posX, circles[0].posY, rectSize/16, rectSize/16);
+    ellipse(stars[0].posX, stars[0].posY, rectSize/16, rectSize/16);
     
-    circles[1].posX = 750;
-    circles[1].posY = 80;
+    stars[1].posX = 750;
+    stars[1].posY = 80;
     scale(0.5);
-    ellipse(circles[1].posX, circles[1].posY, newSize/16, newSize/16);
+    ellipse(stars[1].posX, stars[1].posY, newSize/16, newSize/16);
 
-    circles[2].posX = 800;
-    circles[2].posY = 130;
-    ellipse(circles[2].posX, circles[2].posY, rectSize/16, rectSize/16);
+    stars[2].posX = 800;
+    stars[2].posY = 130;
+    ellipse(stars[2].posX, stars[2].posY, rectSize/16, rectSize/16);
 
-    circles[3].posX = 500;
-    circles[3].posY = 30;
-    ellipse(circles[3].posX, circles[3].posY, newSize/16, newSize/16);
+    stars[3].posX = 500;
+    stars[3].posY = 30;
+    ellipse(stars[3].posX, stars[3].posY, newSize/16, newSize/16);
 
-    circles[4].posX = 1000;
-    circles[4].posY = 60;
-    ellipse(circles[4].posX, circles[4].posY, rectSize/16, rectSize/16);
+    stars[4].posX = 1000;
+    stars[4].posY = 60;
+    ellipse(stars[4].posX, stars[4].posY, rectSize/16, rectSize/16);
     
-    circles[5].posX = 1209;
-    circles[5].posY = 30;
-    ellipse(circles[5].posX, circles[5].posY, rectSize/16, rectSize/16);
+    stars[5].posX = 1209;
+    stars[5].posY = 30;
+    ellipse(stars[5].posX, stars[5].posY, rectSize/16, rectSize/16);
    
-    circles[6].posX = 1259;
-    circles[6].posY = 80;
-    ellipse(circles[6].posX, circles[6].posY, newSize/16, newSize/16);
+    stars[6].posX = 1259;
+    stars[6].posY = 80;
+    ellipse(stars[6].posX, stars[6].posY, newSize/16, newSize/16);
 
-    circles[7].posX = 1359;
-    circles[7].posY = 130;
-    ellipse(circles[7].posX, circles[7].posY, newSize/16, newSize/16);    
+    stars[7].posX = 1359;
+    stars[7].posY = 130;
+    ellipse(stars[7].posX, stars[7].posY, newSize/16, newSize/16);    
 
-    circles[8].posX = 1459;
-    circles[8].posY = 180;
-    ellipse(circles[8].posX, circles[8].posY, newSize/16, newSize/16);  
+    stars[8].posX = 1459;
+    stars[8].posY = 180;
+    ellipse(stars[8].posX, stars[8].posY, newSize/16, newSize/16);  
     
-    circles[9].posX = 700;
-    circles[9].posY = 180;
-    ellipse(circles[9].posX, circles[9].posY, newSize/16, newSize/16);    
+    stars[9].posX = 700;
+    stars[9].posY = 180;
+    ellipse(stars[9].posX, stars[9].posY, newSize/16, newSize/16);    
 
-    circles[10].posX = 600;
-    circles[10].posY = 180;
-    ellipse(circles[10].posX, circles[10].posY, rectSize/16, rectSize/16);    
+    stars[10].posX = 600;
+    stars[10].posY = 180;
+    ellipse(stars[10].posX, stars[10].posY, rectSize/16, rectSize/16);    
 }
 
 function load_cat(){
@@ -219,33 +201,59 @@ function load_sun(){
     Sun.push(loadImage('sun_1.png'));
     Sun.push(loadImage('sun_2.png'));
     Sun.push(loadImage('sun_3.png'));
+    Sun.push(loadImage('sun_4.png'));
     isSun = false;
   }
 }
 
+function load_moon(){
+  if (isMoon) {
+    rectMode(CENTER);
+    Moon.push(loadImage('moon_0.png'));
+    Moon.push(loadImage('moon_1.png'));
+    Moon.push(loadImage('moon_2.png'));
+    Moon.push(loadImage('moon_3.png'));
+    Moon.push(loadImage('moon_4.png'));
+    isMoon = false;
+  }
+}
+
+
+
 function display_sun(vocal){
-  var vocalFrame = int(map(vocal, 0, 100, 0, 3));
+  var vocalFrame = int(map(vocal, 0, 100, 0, 4));
   push();
   scale(0.4);
   image(Sun[vocalFrame], 100, 50);
   pop();
 }
 
-function load_circles(){
+function display_moon(vocal){
+  var vocalFrame = int(map(vocal, 0, 100, 0, 4));
+  console.log(vocalFrame);
+
+  push();
+  scale(0.4);
+  image(Moon[vocalFrame], 1100, 50);
+  pop();
+}
+
+
+function load_star(){
   let posX = 30;
   let posY = 500;
   for (let i = 0; i < 15; i++)
   {
-    let myCircle = new Circle(posX, posY, 40);
-    myCircle.x = posX;
-    myCircle.y = posY;
-    circles.push(myCircle);
+    let myStar = new Star(posX, posY, 40);
+    myStar.x = posX;
+    myStar.y = posY;
+    stars.push(myStar);
   }
 
 }
 
 
-class Circle {
+class Star {
   constructor(x, y, size) {
     this.x = x;
     this.y = y;
