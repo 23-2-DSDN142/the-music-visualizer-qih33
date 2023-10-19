@@ -138,6 +138,8 @@ function display_circle(words, vocal, drum, bass, other, counter){
   let colorLerp = lerpColor(lightBlue, grey, mappedColorLerp);
   let newSize = map(vocal, 0, 100, 50, width/2);
   fill(colorLerp);
+  noStroke();
+
 
     circles[0].posX = 300;
     circles[0].posY = 50;
