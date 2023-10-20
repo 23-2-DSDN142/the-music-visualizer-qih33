@@ -14,7 +14,15 @@ var isMoon =true;
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-  background(20)
+  if (song.currentTime() < 70.69864583333333)
+  {
+    background('#fefae0');
+  }
+  else
+  {
+    background(20);
+  }
+ 
   load_cat();
   cat_walk();
   display_leftlines(other);
